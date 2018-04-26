@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissorsLizardSpock
 {
-    public static class UI
+    public class UI
     {
-        static string GetUserInput(string message, string type)
+
+        public void AlertUser(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        public string GetUserInput(string message, string type)
         {
             string input;
 
@@ -33,7 +39,7 @@ namespace RockPaperScissorsLizardSpock
             return input;
         }
 
-        static bool IsValidInt(string str)
+        private bool IsValidInt(string str)
         {
             int trash = 0;
             if(Int32.TryParse(str, out trash))
