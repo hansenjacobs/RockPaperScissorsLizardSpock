@@ -11,37 +11,20 @@ namespace RockPaperScissorsLizardSpock
         Player player1;
         Player player2;
         UI ui;
+        List<Gesture> gestures;
 
         public Game()
         {
             ui = new UI();
         }
 
-        public void RunGame()
+        private void InitializeGestures()
         {
-            string input;
-
-            DisplayWelcome();
-            do
-            {
-                input = ui.GetUserInput("How many players are there? (max 2)", "string");
-            } while (input != "1" || input != "2");
-
-            if(input == "1")
-            {
-                // Setup one human and one computer player.
-            }
-            else
-            {
-                // Setup two human players.
-            }
-
-            // Do
-                // Create round - store in list for history review?
-                // Update player scores
-                // Display round results
-            // While (player1.score < 2 && player2.score < 2)
-
+            gestures.Add(new Gesture("rock", new List<string> { "crushes", "crushes" }, new List<string> { "scissors", "lizard" }));
+            gestures.Add(new Gesture("paper", new List<string> { "covers", "disproves" }, new List<string> { "rock", "spock" }));
+            gestures.Add(new Gesture("scissors", new List<string> { "cuts", "decapitates" }, new List<string> { "paper", "lizard" }));
+            gestures.Add(new Gesture("lizard", new List<string> { "poisions", "eats" }, new List<string> { "spock", "paper" }));
+            gestures.Add(new Gesture("spock", new List<string> { "smashes", "vaporizes" }, new List<string> { "scissors", "rock" }));
         }
 
         public void DisplayWelcome()
@@ -72,6 +55,36 @@ namespace RockPaperScissorsLizardSpock
             ui.AlertUser("PAPER disproves SPOCK");
             ui.AlertUser("SPOCK vaporizes ROCK");
             ui.AlertUser("ROCK crushes SCISSORS\n");
+        }
+
+        public void RunGame()
+        {
+            string input;
+
+            DisplayWelcome();
+            do
+            {
+                input = ui.GetUserInput("How many players are there? (max 2)", "string");
+            } while (input != "1" || input != "2");
+
+            if (input == "1")
+            {
+                // Setup one human and one computer player.
+            }
+            else
+            {
+                // Setup two human players.
+            }
+
+            // Setup gestures.
+
+
+            // Do
+            // Create round - store in list for history review?
+            // Update player scores
+            // Display round results
+            // While (player1.score < 2 && player2.score < 2)
+
         }
     }
 }
