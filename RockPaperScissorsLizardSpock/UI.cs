@@ -20,6 +20,7 @@ namespace RockPaperScissorsLizardSpock
 
             Console.WriteLine("\n" + message);
             input = Console.ReadLine();
+            Console.Write("\n");
 
             switch (type)
             {
@@ -46,6 +47,7 @@ namespace RockPaperScissorsLizardSpock
             {
                 return true;
             }
+            Console.WriteLine("Invalid input. Please enter a whole number.");
             return false;
         }
     }
