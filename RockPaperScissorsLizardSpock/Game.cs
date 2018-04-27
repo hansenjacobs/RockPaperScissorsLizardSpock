@@ -174,6 +174,20 @@ namespace RockPaperScissorsLizardSpock
 
             } while (player1.GetRoundsWon() < 2 && player2.GetRoundsWon() < 2);
 
+            Player winner = player1.GetRoundsWon() > player2.GetRoundsWon() ? player1 : player2;
+
+            Console.Clear();
+
+            ui.AlertUser("G A M E  O V E R\n");
+            ui.AlertUser(winner.GetName().ToUpper() + " WINS!\n");
+            ui.AlertUser("Final Results");
+            ui.AlertUser("- - - - - - - - - - -");
+            ui.AlertUser(player1.GetName() + " " + player1.GetRoundsWon());
+            ui.AlertUser(player2.GetName() + " " + player2.GetRoundsWon() + "\n");
+            if(ui.GetUserInput("Would you like to play again? (yes/no)", "yesNo").ToLower() == "yes")
+            {
+                RunGame();
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace RockPaperScissorsLizardSpock
                 case "int":
                     if (!IsValidInt(input))
                     {
-                        AlertUser("Invalid input - whole number expected.  Please try again.")
+                        AlertUser("Invalid input - whole number expected.  Please try again.");
                         return GetUserInput(message, type);
                     }
                     break;
@@ -35,7 +35,15 @@ namespace RockPaperScissorsLizardSpock
                 case "RPSLS":
                     if (!IsValidRPSLS(input))
                     {
-                        AlertUser("Invalid input.  Please enter a valid gesture - 'rock', 'paper', 'scissors', 'lizard', 'spock'.")
+                        AlertUser("Invalid input.  Please enter a valid gesture - 'rock', 'paper', 'scissors', 'lizard', 'spock'.");
+                        return GetUserInput(message, type);
+                    }
+                    break;
+
+                case "yesNo":
+                    if (!IsValidYesNo(input))
+                    {
+                        AlertUser("Invalid input. Please enter 'yes' or 'no'.");
                         return GetUserInput(message, type);
                     }
                     break;
@@ -56,7 +64,6 @@ namespace RockPaperScissorsLizardSpock
             {
                 return true;
             }
-            Console.WriteLine("Invalid input. Please enter a whole number.");
             return false;
         }
 
@@ -74,6 +81,19 @@ namespace RockPaperScissorsLizardSpock
                 default:
                     return false;
 
+            }
+        }
+
+        private bool IsValidYesNo(string str)
+        {
+            switch (str.ToLower())
+            {
+                case "yes":
+                case "no":
+                    return true;
+
+                default:
+                    return false;
             }
         }
     }
