@@ -8,7 +8,7 @@ namespace RockPaperScissorsLizardSpock
 {
     class Gesture
     {
-        string name;
+        public string name;
         List<string> verbs = new List<string>();
         List<string> winAgainstGestures = new List<string>();
 

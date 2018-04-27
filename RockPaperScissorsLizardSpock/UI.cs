@@ -27,6 +27,15 @@ namespace RockPaperScissorsLizardSpock
                 case "int":
                     if (!IsValidInt(input))
                     {
+                        AlertUser("Invalid input - whole number expected.  Please try again.")
+                        return GetUserInput(message, type);
+                    }
+                    break;
+
+                case "RPSLS":
+                    if (!IsValidRPSLS(input))
+                    {
+                        AlertUser("Invalid input.  Please enter a valid gesture - 'rock', 'paper', 'scissors', 'lizard', 'spock'.")
                         return GetUserInput(message, type);
                     }
                     break;
@@ -49,6 +58,23 @@ namespace RockPaperScissorsLizardSpock
             }
             Console.WriteLine("Invalid input. Please enter a whole number.");
             return false;
+        }
+
+        private bool IsValidRPSLS(string str)
+        {
+            switch (str.ToLower().Trim())
+            {
+                case "rock":
+                case "paper":
+                case "scissors":
+                case "lizard":
+                case "spock":
+                    return true;
+
+                default:
+                    return false;
+
+            }
         }
     }
 }

@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissorsLizardSpock
 {
-    class Human
+    class Human : Player
     {
+        UI ui;
+        public Human(string name, UI ui) : base(name)
+        {
+            this.ui = ui;
+        }
+
+        public override Gesture GetRPSLSChoice(List<Gesture> gestures)
+        {
+            string input = ui.GetUserInput("What gesture would you like to execute?\n", "RPSLS");
+            return gestures.Where(gesture => gesture.name == input).FirstOrDefault();
+        }
     }
 }
