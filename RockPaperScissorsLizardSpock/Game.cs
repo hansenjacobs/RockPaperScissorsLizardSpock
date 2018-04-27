@@ -84,7 +84,7 @@ namespace RockPaperScissorsLizardSpock
             do
             {
                 input = ui.GetUserInput("How many players are there? (max 2)", "string");
-            } while (input != "0" || input != "1" || input != "2");
+            } while (input != "0" && input != "1" && input != "2");
 
             switch (input)
             {
@@ -124,11 +124,6 @@ namespace RockPaperScissorsLizardSpock
                     throw new Exception();
             }
 
-            // Do
-            // Create round - store in list for history review?
-            // Update player scores
-            // Display round results
-            // While (player1.score < 2 && player2.score < 2)
             int roundNumber = 0;
 
             do
