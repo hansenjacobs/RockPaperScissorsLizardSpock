@@ -84,19 +84,45 @@ namespace RockPaperScissorsLizardSpock
             do
             {
                 input = ui.GetUserInput("How many players are there? (max 2)", "string");
-            } while (input != "1" || input != "2");
+            } while (input != "0" || input != "1" || input != "2");
 
-            if (input == "1")
+            switch (input)
             {
-                // Setup one human and one computer player.
-            }
-            else
-            {
-                // Setup two human players.
-            }
+                case "0":
+                    player1 = new Computer("CPU 1");
+                    player2 = new Computer("CPU 2");
+                    break;
 
-            
+                case "1":
+                    input = ui.GetUserInput("What is your name?", "string");
+                    if(input == null || input == "")
+                    {
+                        input = "Player 1";
+                    }
 
+                    player1 = new Human(input);
+                    player2 = new Computer("CPU");
+                    break;
+
+                case "2":
+                    input = ui.GetUserInput("What is player 1's name?", "string");
+                    if(input == null || input == "")
+                    {
+                        input = "Player 1";
+                    }
+                    player1 = new Human(input);
+
+                    input = ui.GetUserInput("What is player 2's name?", "string");
+                    if(input == null || input == "")
+                    {
+                        input = "Player 2"
+                    }
+                    player2 = new Human(input);
+                    break;
+
+                default:
+                    throw new Exception();
+            }
 
             // Do
             // Create round - store in list for history review?
