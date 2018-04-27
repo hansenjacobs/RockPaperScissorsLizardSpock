@@ -20,11 +20,14 @@ namespace RockPaperScissorsLizardSpock
 
         private void InitializeGestures()
         {
-            gestures.Add(new Gesture("paper", new List<string> { "covers", "disproves" }, new List<string> { "rock", "spock" }));
-            gestures.Add(new Gesture("scissors", new List<string> { "cuts", "decapitates" }, new List<string> { "paper", "lizard" }));
-            gestures.Add(new Gesture("lizard", new List<string> { "poisions", "eats" }, new List<string> { "spock", "paper" }));
-            gestures.Add(new Gesture("spock", new List<string> { "smashes", "vaporizes" }, new List<string> { "scissors", "rock" }));
-            gestures.Add(new Gesture("rock", new List<string> { "crushes", "crushes" }, new List<string> { "lizard", "scissors" }));
+            if(gestures.Count == 0)
+            {
+                gestures.Add(new Gesture("paper", new List<string> { "covers", "disproves" }, new List<string> { "rock", "spock" }));
+                gestures.Add(new Gesture("scissors", new List<string> { "cuts", "decapitates" }, new List<string> { "paper", "lizard" }));
+                gestures.Add(new Gesture("lizard", new List<string> { "poisions", "eats" }, new List<string> { "spock", "paper" }));
+                gestures.Add(new Gesture("spock", new List<string> { "smashes", "vaporizes" }, new List<string> { "scissors", "rock" }));
+                gestures.Add(new Gesture("rock", new List<string> { "crushes", "crushes" }, new List<string> { "lizard", "scissors" }));
+            }
         }
 
         public void DisplayWelcome()
@@ -138,6 +141,7 @@ namespace RockPaperScissorsLizardSpock
                 ui.AlertUser("Round " + roundNumber);
                 Gesture player2Gesture = player2.GetRPSLSChoice(gestures);
 
+                Console.Clear();
                 ui.AlertUser("Round " + roundNumber.ToString() + " Results");
                 ui.AlertUser(" - - - - - - - - - - - - - - - - - - - - - - -");
 
