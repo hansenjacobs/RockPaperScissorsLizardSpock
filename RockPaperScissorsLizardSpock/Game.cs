@@ -100,7 +100,7 @@ namespace RockPaperScissorsLizardSpock
                         input = "Player 1";
                     }
 
-                    player1 = new Human(input);
+                    player1 = new Human(input, ui);
                     player2 = new Computer("CPU");
                     break;
 
@@ -110,14 +110,14 @@ namespace RockPaperScissorsLizardSpock
                     {
                         input = "Player 1";
                     }
-                    player1 = new Human(input);
+                    player1 = new Human(input, ui);
 
                     input = ui.GetUserInput("What is player 2's name?", "string");
                     if(input == null || input == "")
                     {
-                        input = "Player 2"
+                        input = "Player 2";
                     }
-                    player2 = new Human(input);
+                    player2 = new Human(input, ui);
                     break;
 
                 default:
@@ -129,6 +129,50 @@ namespace RockPaperScissorsLizardSpock
             // Update player scores
             // Display round results
             // While (player1.score < 2 && player2.score < 2)
+            int roundNumber = 0;
+
+            do
+            {
+                roundNumber++;
+
+                Console.Clear();
+                ui.AlertUser("Round " + roundNumber);
+                Gesture player1Gesture = player1.GetRPSLSChoice(gestures);
+
+                Console.Clear();
+                ui.AlertUser("Round " + roundNumber);
+                Gesture player2Gesture = player2.GetRPSLSChoice(gestures);
+
+                ui.AlertUser("Round " + roundNumber.ToString() + " Results");
+                ui.AlertUser(" - - - - - - - - - - - - - - - - - - - - - - -");
+
+                if (player1Gesture.GetWinAgainstGestures().Contains(player2Gesture.GetName()))
+                {
+                    player1.IncreaseRoundsWon(1);
+                    int index = player1Gesture.GetWinAgainstGestures().IndexOf(player2Gesture.GetName());
+                    ui.AlertUser(player1Gesture.GetName().ToUpper() + " " + player1Gesture.GetVerb(index) + " " + player1Gesture.GetWinAgainstGesture(index).ToUpper() + "\n");
+                    ui.AlertUser(player1.GetName() + " wins this round!");
+                }
+                else if (player2Gesture.GetWinAgainstGestures().Contains(player1Gesture.GetName()))
+                {
+                    player2.IncreaseRoundsWon(1);
+                    int index = player2Gesture.GetWinAgainstGestures().IndexOf(player1Gesture.GetName());
+                    ui.AlertUser(player2Gesture.GetName().ToUpper() + " " + player2Gesture.GetVerb(index) + " " + player2Gesture.GetWinAgainstGesture(index).ToUpper() + "\n");
+                    ui.AlertUser(player2.GetName() + " wins this round!");
+                }
+                else
+                {
+                    ui.AlertUser(player1Gesture.GetName().ToUpper() + " ties " + player2Gesture.GetName().ToUpper());
+                    ui.AlertUser("Round ends in a draw.");
+                }
+
+                ui.AlertUser("\nCurrent Standings");
+                ui.AlertUser("- - - - - - - - - - -");
+                ui.AlertUser(player1.GetName() + " " + player1.GetRoundsWon());
+                ui.AlertUser(player2.GetName() + " " + player2.GetRoundsWon() + "\n");
+                ui.GetUserInput("Press enter to continue...", "string");
+
+            } while (player1.GetRoundsWon() < 2 && player2.GetRoundsWon() < 2);
 
         }
     }

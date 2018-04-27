@@ -28,5 +28,10 @@ namespace RockPaperScissorsLizardSpock
         }
 
         public abstract Gesture GetRPSLSChoice(List<Gesture> gestures);
+
+        public void IncreaseRoundsWon(int incrementBy)
+        {
+            roundsWon += incrementBy;
+        }
     }
 }
