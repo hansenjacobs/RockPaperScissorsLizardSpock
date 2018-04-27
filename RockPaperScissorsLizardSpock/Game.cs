@@ -11,7 +11,7 @@ namespace RockPaperScissorsLizardSpock
         Player player1;
         Player player2;
         UI ui;
-        List<Gesture> gestures;
+        List<Gesture> gestures = new List<Gesture>();
 
         public Game()
         {
@@ -20,11 +20,11 @@ namespace RockPaperScissorsLizardSpock
 
         private void InitializeGestures()
         {
-            gestures.Add(new Gesture("rock", new List<string> { "crushes", "crushes" }, new List<string> { "scissors", "lizard" }));
             gestures.Add(new Gesture("paper", new List<string> { "covers", "disproves" }, new List<string> { "rock", "spock" }));
             gestures.Add(new Gesture("scissors", new List<string> { "cuts", "decapitates" }, new List<string> { "paper", "lizard" }));
             gestures.Add(new Gesture("lizard", new List<string> { "poisions", "eats" }, new List<string> { "spock", "paper" }));
             gestures.Add(new Gesture("spock", new List<string> { "smashes", "vaporizes" }, new List<string> { "scissors", "rock" }));
+            gestures.Add(new Gesture("rock", new List<string> { "crushes", "crushes" }, new List<string> { "lizard", "scissors" }));
         }
 
         public void DisplayWelcome()
@@ -43,23 +43,42 @@ namespace RockPaperScissorsLizardSpock
         public void DisplayGestures()
         {
             ui.AlertUser("RPSLS Gestures:");
-            ui.AlertUser("ROCK, PAPER, SCISSORS, LIZARD, SPOCK\n");
+            ui.AlertUser(GetGesturesStringList() + "\n");
+
             ui.AlertUser("Winning Combinations:");
-            ui.AlertUser("SCISSORS cuts PAPER");
-            ui.AlertUser("PAPER covers ROCK");
-            ui.AlertUser("ROCK crushes LIZARD");
-            ui.AlertUser("LIZARD poisons SPOCK");
-            ui.AlertUser("SPOCK smashes SCISSORS");
-            ui.AlertUser("SCISSORS decapitates LIZARD");
-            ui.AlertUser("LIZARD eats PAPER");
-            ui.AlertUser("PAPER disproves SPOCK");
-            ui.AlertUser("SPOCK vaporizes ROCK");
-            ui.AlertUser("ROCK crushes SCISSORS\n");
+
+            foreach (Gesture gesture in gestures)
+            {
+                List<string> winAgainstGestures = gesture.GetWinAgainstGestures();
+                List<string> verbs = gesture.GetVerbs();
+
+                for (int i = 0; i < winAgainstGestures.Count; i++)
+                {
+                    if(gesture.GetName() == "rock" && winAgainstGestures[i] == "scissors")
+                    {
+                        Console.Write("And as it alaways has, ");
+                    }
+                    ui.AlertUser(gesture.GetName().ToUpper() + " " + verbs[i] + " " + winAgainstGestures[i].ToUpper());
+                }
+            }
+        }
+
+        private string GetGesturesStringList()
+        {
+            string output = "";
+            foreach(Gesture gesture in gestures)
+            {
+                output += gesture.GetName().ToUpper() + ", ";
+            }
+
+            return output.Substring(0, output.Length - 2);
         }
 
         public void RunGame()
         {
             string input;
+
+            InitializeGestures();
 
             DisplayWelcome();
             do
@@ -76,7 +95,7 @@ namespace RockPaperScissorsLizardSpock
                 // Setup two human players.
             }
 
-            // Setup gestures.
+            
 
 
             // Do
