@@ -8,30 +8,32 @@ namespace RockPaperScissorsLizardSpock
 {
     abstract class Player
     {
-        string name;
-        int roundsWon;
+        string _name;
+        int _roundsWon;
 
         public Player(string name)
         {
-            this.name = name;
-            roundsWon = 0;
+            _name = name;
+            _roundsWon = 0;
         }
 
-        public string GetName()
+        public string Name
         {
-            return name;
+            get{
+                return _name;
+            }
         }
 
-        public int GetRoundsWon()
+        public int RoundsWon
         {
-            return roundsWon;
+            get { return _roundsWon; }
         }
 
         public abstract Gesture GetRPSLSChoice(List<Gesture> gestures);
 
         public void IncreaseRoundsWon(int incrementBy)
         {
-            roundsWon += incrementBy;
+            _roundsWon += incrementBy;
         }
     }
 }

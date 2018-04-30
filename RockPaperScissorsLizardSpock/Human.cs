@@ -16,7 +16,7 @@ namespace RockPaperScissorsLizardSpock
 
         public override Gesture GetRPSLSChoice(List<Gesture> gestures)
         {
-            string input = ui.GetUserInput(base.GetName() + ", what gesture would you like to execute?\n", "RPSLS").ToLower();
+            string input = ui.GetUserInput(base.Name + ", what gesture would you like to execute?\n", "RPSLS").ToLower();
             return gestures.Where(gesture => gesture.name == input).FirstOrDefault();
         }
     }

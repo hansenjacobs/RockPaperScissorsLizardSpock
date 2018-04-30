@@ -152,14 +152,14 @@ namespace RockPaperScissorsLizardSpock
                     player1.IncreaseRoundsWon(1);
                     int index = player1Gesture.GetWinAgainstGestures().IndexOf(player2Gesture.GetName());
                     ui.AlertUser(player1Gesture.GetName().ToUpper() + " " + player1Gesture.GetVerb(index) + " " + player1Gesture.GetWinAgainstGesture(index).ToUpper() + "\n");
-                    ui.AlertUser(player1.GetName() + " wins this round!");
+                    ui.AlertUser(player1.Name + " wins this round!");
                 }
                 else if (player2Gesture.GetWinAgainstGestures().Contains(player1Gesture.GetName()))
                 {
                     player2.IncreaseRoundsWon(1);
                     int index = player2Gesture.GetWinAgainstGestures().IndexOf(player1Gesture.GetName());
                     ui.AlertUser(player2Gesture.GetName().ToUpper() + " " + player2Gesture.GetVerb(index) + " " + player2Gesture.GetWinAgainstGesture(index).ToUpper() + "\n");
-                    ui.AlertUser(player2.GetName() + " wins this round!");
+                    ui.AlertUser(player2.Name + " wins this round!");
                 }
                 else
                 {
@@ -169,22 +169,22 @@ namespace RockPaperScissorsLizardSpock
 
                 ui.AlertUser("\nCurrent Standings");
                 ui.AlertUser("- - - - - - - - - - -");
-                ui.AlertUser(player1.GetName() + " " + player1.GetRoundsWon());
-                ui.AlertUser(player2.GetName() + " " + player2.GetRoundsWon() + "\n");
+                ui.AlertUser(player1.Name + " " + player1.RoundsWon);
+                ui.AlertUser(player2.Name + " " + player2.RoundsWon + "\n");
                 ui.GetUserInput("Press enter to continue...", "string");
 
-            } while (player1.GetRoundsWon() < 2 && player2.GetRoundsWon() < 2);
+            } while (player1.RoundsWon < 2 && player2.RoundsWon < 2);
 
-            Player winner = player1.GetRoundsWon() > player2.GetRoundsWon() ? player1 : player2;
+            Player winner = player1.RoundsWon > player2.RoundsWon ? player1 : player2;
 
             Console.Clear();
 
             ui.AlertUser("G A M E  O V E R\n");
-            ui.AlertUser(winner.GetName().ToUpper() + " WINS!\n");
+            ui.AlertUser(winner.Name.ToUpper() + " WINS!\n");
             ui.AlertUser("Final Results");
             ui.AlertUser("- - - - - - - - - - -");
-            ui.AlertUser(player1.GetName() + " " + player1.GetRoundsWon());
-            ui.AlertUser(player2.GetName() + " " + player2.GetRoundsWon() + "\n");
+            ui.AlertUser(player1.Name + " " + player1.RoundsWon);
+            ui.AlertUser(player2.Name + " " + player2.RoundsWon + "\n");
             if(ui.GetUserInput("Would you like to play again? (yes/no)", "yesNo").ToLower() == "yes")
             {
                 RunGame();
