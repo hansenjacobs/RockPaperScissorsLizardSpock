@@ -12,6 +12,7 @@ namespace RockPaperScissorsLizardSpock
         Player player2;
         UI ui;
         List<Gesture> gestures = new List<Gesture>();
+        int winningScore;
 
         public Game()
         {
@@ -90,6 +91,10 @@ namespace RockPaperScissorsLizardSpock
                 input = ui.GetUserInput("How many players are there? (max 2)", "string");
 
             } while (input != "0" && input != "1" && input != "2");
+
+            ui.AlertUser("The winner is determined by the best out of X rounds, typically 3 rounds are played.");
+
+            winningScore = Convert.ToInt32(Math.Floor(double.Parse(ui.GetUserInput("How many rounds would you like to play?", "int"))/2) + 1);
 
             switch (input)
             {
@@ -173,7 +178,7 @@ namespace RockPaperScissorsLizardSpock
                 ui.AlertUser(player2.Name + " " + player2.RoundsWon + "\n");
                 ui.GetUserInput("Press enter to continue...", "string");
 
-            } while (player1.RoundsWon < 2 && player2.RoundsWon < 2);
+            } while (player1.RoundsWon < winningScore && player2.RoundsWon < winningScore);
 
             Player winner = player1.RoundsWon > player2.RoundsWon ? player1 : player2;
 
