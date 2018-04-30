@@ -38,7 +38,8 @@ namespace RockPaperScissorsLizardSpock
             ui.AlertUser("If you are familar with the traditional game Rock Paper Scissors,");
             ui.AlertUser("the RPSLS will seem familiar.  Each player privately chooses their");
             ui.AlertUser("gesture and then they compare to find the winner.  However, with");
-            ui.AlertUser("two more possible gestures come more potential to lose.\n");
+            ui.AlertUser("two more possible gestures come more potential to lose.");
+            ui.AlertUser("Use the 'quit' command to exit the application at anytime.\n");
             DisplayGestures();           
 
         }
@@ -87,6 +88,7 @@ namespace RockPaperScissorsLizardSpock
             do
             {
                 input = ui.GetUserInput("How many players are there? (max 2)", "string");
+
             } while (input != "0" && input != "1" && input != "2");
 
             switch (input)

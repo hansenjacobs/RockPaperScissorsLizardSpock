@@ -22,6 +22,11 @@ namespace RockPaperScissorsLizardSpock
             input = Console.ReadLine();
             Console.Write("\n");
 
+            if(input.ToLower().Trim() == "quit" || input.ToLower().Trim() == "exit")
+            {
+                Environment.Exit(0);
+            }
+
             switch (type)
             {
                 case "int":
