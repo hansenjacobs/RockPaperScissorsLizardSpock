@@ -13,10 +13,12 @@ namespace RockPaperScissorsLizardSpock
         UI ui;
         List<Gesture> gestures = new List<Gesture>();
         int winningScore;
+        Random random;
 
         public Game()
         {
             ui = new UI();
+            random = new Random();
         }
 
         private void InitializeGestures()
@@ -99,8 +101,8 @@ namespace RockPaperScissorsLizardSpock
             switch (input)
             {
                 case "0":
-                    player1 = new Computer("CPU 1");
-                    player2 = new Computer("CPU 2");
+                    player1 = new Computer("CPU 1", random);
+                    player2 = new Computer("CPU 2", random);
                     break;
 
                 case "1":
@@ -111,7 +113,7 @@ namespace RockPaperScissorsLizardSpock
                     }
 
                     player1 = new Human(input, ui);
-                    player2 = new Computer("CPU");
+                    player2 = new Computer("CPU", random);
                     break;
 
                 case "2":

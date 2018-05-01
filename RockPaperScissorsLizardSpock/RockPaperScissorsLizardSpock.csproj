@@ -22,8 +22,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\localhost\d%24\Users\hanse\Google Drive\devCodeCamp\Week4\</InstallUrl>
-    <ApplicationRevision>1</ApplicationRevision>
+    <InstallUrl>\\localhost\%24d\Users\hanse\Google Drive\devCodeCamp\Week4\</InstallUrl>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

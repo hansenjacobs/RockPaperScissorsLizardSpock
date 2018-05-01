@@ -8,14 +8,15 @@ namespace RockPaperScissorsLizardSpock
 {
     class Computer : Player
     {
-        public Computer(string name) : base(name)
+        Random random;
+        public Computer(string name, Random random) : base(name)
         {
-
+            this.random = random;
         }
 
         public override Gesture GetRPSLSChoice(List<Gesture> gestures)
         {
-            return gestures[new Random().Next(0, gestures.Count)];
+            return gestures[random.Next(0, gestures.Count)];
         }
     }
 }
